@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // Reactive Form
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule,FormsModule } from "@angular/forms";
 
 // App routing modules
 import { AppRoutingModule } from './shared/routing/app-routing.module';
@@ -23,7 +23,10 @@ import { environment } from '../environments/environment';
 
 // Auth service
 import { AuthService } from "./shared/services/auth.service";
-
+//cliente http!
+import { HttpClientModule } from '@angular/common/http';
+ import { com_apiservice } from './shared/services/com-api.service';
+//import { HelloComponent } from './components/hello';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { AuthService } from "./shared/services/auth.service";
     DashboardComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent
+   // ,    HelloComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +44,12 @@ import { AuthService } from "./shared/services/auth.service";
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
+ // , com_apiservice
   ],
-  providers: [AuthService],
+  providers: [AuthService, com_apiservice],
   bootstrap: [AppComponent]
 })
 

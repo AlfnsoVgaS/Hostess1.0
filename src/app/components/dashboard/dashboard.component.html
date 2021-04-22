@@ -1,8 +1,39 @@
-<!-- Top navigation -->
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0">
-    <img class="brand-logo" src="./assets/legourmet.jpg" alt="positronX.io Logo">
-  </a>
+<!-- Top navigation  fixed-top -->
+<nav class="navbar navbar-dark  bg-dark flex-md-nowrap p-0 shadow">
+
+
+
+  <div class="col">
+    <div class="px-logo">
+      <a href="https://www.starsoftware.com.co/" target="_blank">
+        <img src="./assets/legourmet.jpg" alt="Starsoftware - Hostess">
+      </a>
+    </div>
+  </div>
+  <div class="row" *ngIf="authService.userData as user">
+    <div class="col-md-12">
+      <div class="media">
+        <!--   <div class="media-body">-->
+        <h1>Hosstes: {{(user.displayName) ? user.displayName : 'User'}}</h1>
+
+
+        <img class="rounded-circle p-3" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
+          alt="{{user.displayName}}">
+
+
+
+        <!--class="text-secondary"
+          <p>Usuario ID: <strong>{{user.uid}}</strong></p>
+          <p>E-mail: <strong>{{user.email}}</strong></p>
+                <p>E-mail Verificado: <strong>{{user.emailVerified}}</strong></p>
+
+        </div>
+-->
+      </div>
+    </div>
+  </div>
+
+
 </nav>
 
 <!-- Sidebar navigation -->
@@ -14,9 +45,10 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active">
-              <i class="fas fa-user"></i>Perfil del usuario
+              <i class="fas fa-user"></i>Reservas Hostess
             </a>
           </li>
+
           <!-- Calling SignOut() Api from AuthService -->
           <li class="nav-item">
             <a class="nav-link" (click)="authService.SignOut()">
@@ -28,30 +60,81 @@
     </nav>
 
     <!-- Main content -->
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-1">
       <div class="inner-adjust">
 
         <div class="pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">PERFIL</h1>
+          <h1 class="h2">RESERVAS HOSTESS</h1>
         </div>
         <!-- Show user data when logged in -->
-        <div class="row" *ngIf="authService.userData as user">
-          <div class="col-md-12">
-            <div class="media">
-              <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
-                alt="{{user.displayName}}">
-              <div class="media-body">
-                <h1>Hola: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
-                <p>Usuario ID: <strong>{{user.uid}}</strong></p>
-                <p>E-mail: <strong>{{user.email}}</strong></p>
-                <p>E-mail Verificado: <strong>{{user.emailVerified}}</strong></p>
-              </div>
-            </div>
-          </div>
-        </div>
 
       </div>
+      <!--      <input type="button" onclick="CreateTableFromJSON()" value="Leer reservas:" />
+      <p id="showData"></p>
+ -->
+      <!-- <hello name="{{ name }}"></hello> -->
+      <p>
+        Reservas para hoy:
+      </p>
+
+
+      <!-- 
+      <button (click)="cargarDatos()">Click para cargar datos</button>
+      
+    
+      <pre *ngIf="datosCargados"  >
+        {{datosCargados | json}}
+      
+        <table>
+          <thead>
+            <th>Cliente</th>
+            <th>Ubicacion</th>
+            <th>Fecha-Hora</th>
+            <th>id</th>
+            <th>sito</th>
+            <th>restaurante</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="Datos descargados">
+              <td>{{datos.nom_cliente}}</td>
+              <td>{{datos.ubicacion}}</td>
+              <td>{{datos.fecharev}}</td>
+              <td>{{datos.id}}</td>
+              <td>{{datos.sitio}}</td>
+              <td>{{datos.nombre}}</td>
+            </tr>
+          </tbody>
+      
+        </table>
+      </pre>
+      <h1 *ngIf="!datosCargados"  >No hay datos cargados</h1>
+ -->
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>Cliente</td>
+            <td>Ubicacion</td>
+            <td>Fecha-Hora</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let array of rta">
+            <td>{{array.nom_cliente}}</td>
+            <td>{{array.ubicacion}}</td>
+            <td>{{array.fechaRev}}</td>
+          </tr>
+        </tbody>
+      </table>
+
     </main>
 
   </div>
 </div>
+<!--
+<form [formGroup]="c1form" (ngsumit)="on1form(c1form.value" )>
+  <input type="text" id="campo1" placeholder="campo uno" formControlName="c1">
+  <input type="text" id="campo2" placeholder="campo uno" formCo
+  ntrolName="c2">
+</form>
+-->

@@ -1,0 +1,79 @@
+https://www.youtube.com/watch?v=r3kFmYa_-N4
+https://www.olaclick.com/weareolaclick
+http://datos.gov.co/resource/xdk5-pm3f.json
+json viewer: 
+https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?hl=es
+https://www.youtube.com/watch?v=iXbsn-qaqsw error CORS Angular
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+import { HttpClient } from "@angular/common/http";
+*api json [{"region":"Región Eje Cafetero - Antioquia","c_digo_dane_del_departamento":"5","departamento":"Antioquia","c_digo_dane_del_municipio":"5001","municipio":"Medellín"}
+
+en el componente.ts
+
+  constructor(private http:HttpClient) { }
+    this.http.get('http://datos.gov.co/resource/xdk5-pm3f.json')
+    .subscribe(data => {
+      this.conversion=data;
+      this.rta=this.conversion;
+      console.log('prueba',this.rta)
+
+
+
+en app.module.ts:
+ import { HttpClientModule } from "@angular/common/http";
+
+npm -i firebase fsevents --save
+npm -i boosttrap jquery --save
+
+adicionar a angular.json boottrap  y  
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/js/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+
+app.component.html
+ <router-outlet> </router-outlet>
+app.module.ts
+ // Reactive Form
+ import { ReactiveFormsModule,FormsModule } from "@angular/forms";
+
+  imports: [
+    ReactiveFormsModule,
+    FormsModule ]
+
+Modulo1,component.ts
+  import  {FormGroup,FormControl,validators} from '@angular/Forms';
+
+  c1Form = new FormGroup({
+    campo1 : new FormControl('', Validators.required),
+    campo2 : new FormControl('', Validators.required)
+  })
+
+
+
+export class AppComponent  {
+  name = 'Angular';
+
+  //Inyectamos nuestro servicio
+
+  constructor ( public _ubicacionService: UbicacionService){
+
+  }
+
+  datosCargados =  null
+
+  cargarDatos(){
+
+
+     this._ubicacionService.consumirServicio().subscribe(datos=>{
+this.datosCargados = datos})
+  }
+
+
+ npm audit fix
